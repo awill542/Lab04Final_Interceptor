@@ -115,8 +115,9 @@ class Network:
 # Implement logic for Mallory
 class Mallory:
     def __init__(self):
-        self.private_key =
-        self.public_hex =
+        self.private_key = secrets.randbelow(P - 3) + 2
+        
+        self.public_hex = hex(pow(G, self.private_key, P))
         
         # Mallory maintains TWO sessions
         self.alice_prng = None
@@ -135,7 +136,7 @@ class Mallory:
 
             # TODO: If the sender is alice, generate a session PRNG with Alice. 
             # If the sender is Bob, generate a session PRNG with Bob.
-    
+            
             return self.public_hex # Return Mallory's key instead to generate session PRNGs with Alice and Bob
         
         # 2. Implement Logic for Message Interception/Modification
