@@ -128,10 +128,10 @@ class Mallory:
         if isinstance(payload, str) and payload.startswith("0x"):
             remote_pub = int(payload, 16)
             my_shared_secret = pow(remote_pub, self.private_key, P)
-            if sender == "ALICE":
+            if sender == "Alice":
                 self.alice_prng = SecurePRNG(my_shared_secret)
             elif sender == "Bob":
-                self.bog_prng = SecurePRNG(my_shared_secret)
+                self.bob_prng = SecurePRNG(my_shared_secret)
             
 
             # TODO: If the sender is alice, generate a session PRNG with Alice. 
