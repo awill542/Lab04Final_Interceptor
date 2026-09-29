@@ -132,7 +132,6 @@ class Mallory:
                 self.alice_prng = SecurePRNG(my_shared_secret)
             elif sender == "Bob":
                 self.bob_prng = SecurePRNG(my_shared_secret)
-            
 
             # TODO: If the sender is alice, generate a session PRNG with Alice. 
             # If the sender is Bob, generate a session PRNG with Bob.
