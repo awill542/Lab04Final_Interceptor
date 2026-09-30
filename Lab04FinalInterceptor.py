@@ -55,9 +55,8 @@ class SecurePRNG:
         # TODO: Generates n bytes while ensuring Rollback Resistance. 
         output = b""
         while len(output) < n_bytes:
-            # 1. Produce keystream block from current state
-        block = hashlib.sha256(self.state + b"output").digest()
-        output += block
+            block = hashlib.sha256(self.state + b"output").digest()
+            output += block
             # 2. Update state immediately after with a hash function (One-way progression)
             self.state = hashlib.sha256(
                 self.state + b"update"
@@ -160,7 +159,7 @@ class Mallory:
             modified_ciphertext = xor_crypt(
                 modified_plaintext,
                 self.bob_prng )
-         return modified_ciphertext
+            return modified_ciphertext
 
 
         return payload
